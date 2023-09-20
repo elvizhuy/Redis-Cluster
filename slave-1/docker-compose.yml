@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  redis-master:
+    image: redis:latest
+    hostname: redis-slave-1
+    container_name: redis_slave_1
+    volumes:
+      - redis_slave_1:/data
+      - ./redis-slave-1.conf:/etc/redis/redis.conf
+    ports:
+      - '16379:6379'

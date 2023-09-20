@@ -6,6 +6,6 @@ services:
     container_name: redis_slave_2
     volumes:
       - redis_slave_2:/data
-      - ./redis-slave-2.conf:/etc/redis/redis.conf
+      - redis-slave-2.conf:/usr/local/etc/redis/redis.conf
     ports:
       - '16381:6379'

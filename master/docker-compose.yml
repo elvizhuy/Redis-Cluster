@@ -8,4 +8,4 @@ services:
       - redis_master:/data
       - ./redis-master.conf:/etc/redis/redis.conf
     ports:
-      - '16379:6379'
+      - '6379:6379'

@@ -8,4 +8,4 @@ services:
       - redis_slave_1:/data
       - ./redis-slave-1.conf:/etc/redis/redis.conf
     ports:
-      - '16379:6379'
+      - '6379:6379'

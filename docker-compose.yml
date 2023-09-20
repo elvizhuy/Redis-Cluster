@@ -59,22 +59,22 @@ services:
   #     - 'REDIS_PASSWORD=bitnami'
   #     - 'REDIS_NODES=redis-master redis-slave-1 redis-slave-2 redis-node-3 redis-node-4 redis-node-5'
 
-  redis-node-5:
-    image: docker.io/bitnami/redis-cluster:7.2
-    volumes:
-      - redis-cluster_data-5:/bitnami/redis/data
-    depends_on:
-      - redis-master
-      - redis-slave-1
-      - redis-slave-2
-      - redis-node-3
-      - redis-node-4
-    environment:
-      - 'REDIS_PASSWORD=bitnami'
-      - 'REDISCLI_AUTH=bitnami'
-      - 'REDIS_CLUSTER_REPLICAS=1'
-      - 'REDIS_NODES=redis-master redis-slave-1 redis-slave-2 redis-node-3 redis-node-4 redis-node-5'
-      - 'REDIS_CLUSTER_CREATOR=yes'
+  # redis-node-5:
+  #   image: docker.io/bitnami/redis-cluster:7.2
+  #   volumes:
+  #     - redis-cluster_data-5:/bitnami/redis/data
+  #   depends_on:
+  #     - redis-master
+  #     - redis-slave-1
+  #     - redis-slave-2
+  #     - redis-node-3
+  #     - redis-node-4
+  #   environment:
+  #     - 'REDIS_PASSWORD=bitnami'
+  #     - 'REDISCLI_AUTH=bitnami'
+  #     - 'REDIS_CLUSTER_REPLICAS=1'
+  #     - 'REDIS_NODES=redis-master redis-slave-1 redis-slave-2 redis-node-3 redis-node-4 redis-node-5'
+  #     - 'REDIS_CLUSTER_CREATOR=yes'
 
 volumes:
   redis-master_data:

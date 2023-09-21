@@ -5,7 +5,7 @@ services:
     hostname: redis-master
     container_name: redis_master
     volumes:
-      - ./redis_master:/data
+      - redis-master:/data
       - redis-master.conf:/usr/local/etc/redis/redis.conf
     ports:
       - '16379:6379'
@@ -13,5 +13,4 @@ services:
 
 volumes:
   redis-master:
-    driver: local
   

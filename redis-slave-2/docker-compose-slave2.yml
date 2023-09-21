@@ -1,0 +1,45 @@
+# version: '3.7'
+# services:
+#   redis-master:
+#     image: redis:latest
+#     hostname: redis-slave-2
+#     container_name: redis_slave_2
+#     volumes:
+#       - ./redis_slave_2:/data
+#       - redis-slave-2.conf:/usr/local/etc/redis/redis.conf
+#     ports:
+#       - '16381:6379'
+
+
+
+version: '3'
+services:
+  redis-slave2:
+    image: redis:latest
+    ports:
+      - '6381:6379'
+    command: redis-server --port 6381 --slaveof redis-master 6379
+    networks:
+      - redis-net
+    volumes:
+      - redis-slave2-data:/data
+
+  redis-sentinel:
+    image: redis:latest
+    command: redis-sentinel /etc/redis/sentinel.conf
+    ports:
+      - "26379:26379"
+    networks:
+      - redis-net
+    volumes:
+      - /sentinel:/etc/redis
+    depends_on:
+      - redis-slave2
+
+networks:
+  redis-net:
+    driver: bridge
+
+volumes:
+  redis-slave2-data:
+  sentinel-conf:

@@ -2,26 +2,27 @@
 # services:
 #   redis-master:
 #     image: redis:latest
-#     hostname: redis-slave-1
-#     container_name: redis_slave_1
+#     hostname: redis-slave-2
+#     container_name: redis_slave_2
 #     volumes:
-#       - ./redis_slave_1:/data
-#       - redis-slave-1.conf:/usr/local/etc/redis/redis.conf
+#       - ./redis_slave_2:/data
+#       - redis-slave-2.conf:/usr/local/etc/redis/redis.conf
 #     ports:
-#       - '16380:6379'
+#       - '16381:6379'
+
+
 
 version: '3'
 services:
-  redis-slave1:
+  redis-slave2:
     image: redis:latest
-    container_name: redis-slave1
     ports:
-      - '6380:6379'
-    command: redis-server --port 6380 --slaveof redis-master 6379
+      - '6381:6379'
+    command: redis-server --port 6381 --slaveof redis-master 6379
     networks:
       - redis-net
     volumes:
-      - redis-slave1-data:/data
+      - redis-slave2-data:/data
 
   redis-sentinel:
     image: redis:latest
@@ -31,13 +32,14 @@ services:
     networks:
       - redis-net
     volumes:
-      - /sentinel:/etc/redis
+      - sentinel-conf:/etc/redis
     depends_on:
-      - redis-slave1
+      - redis-slave2
 
 networks:
   redis-net:
     driver: bridge
 
 volumes:
-  redis-slave1-data:
+  redis-slave2-data:
+  sentinel-conf:

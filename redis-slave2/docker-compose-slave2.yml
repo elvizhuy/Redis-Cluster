@@ -23,6 +23,7 @@ services:
       - redis-net
     volumes:
       - redis-slave2-data:/data
+      - /redis-slave2/redis-slave-2.conf:/usr/local/etc/redis/redis.conf
 
   redis-sentinel:
     image: redis:latest

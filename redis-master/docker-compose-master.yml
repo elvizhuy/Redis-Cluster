@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3'
 services:
   redis-master:
     image: redis:latest
@@ -6,7 +6,7 @@ services:
     container_name: redis_master
     volumes:
       - redis-master:/data
-      - redis-master.conf:/usr/local/etc/redis/redis.conf
+      - redis-master/redis-master.conf:/usr/local/etc/redis/redis.conf
     ports:
       - '6379:6379'
     command: redis-server

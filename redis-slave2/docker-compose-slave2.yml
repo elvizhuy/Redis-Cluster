@@ -34,7 +34,7 @@ services:
     networks:
       - redis-net
     volumes:
-      - sentinel-conf:/etc/redis
+      - /redis-sentinel:/etc/redis
     depends_on:
       - redis-slave2
 
@@ -44,4 +44,3 @@ networks:
 
 volumes:
   redis-slave2-data:
-  sentinel-conf:
